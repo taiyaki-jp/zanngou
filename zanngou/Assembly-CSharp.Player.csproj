@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{8F506048-C67E-152D-F9F5-8718D0F30587}</ProjectGuid>
+    <ProjectGuid>{CE259228-3D26-4F69-2AB4-3333486720BC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -58,10 +58,10 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\PlayerKatanaRotation.cs" />
-    <Compile Include="Assets\Scripts\PlayerMouse.cs" />
-    <Compile Include="Assets\Scripts\PlayerKatanaScan.cs" />
     <Compile Include="Assets\Scripts\EemyKatanaScan.cs" />
+    <Compile Include="Assets\Scripts\PlayerKatanaRotation.cs" />
+    <Compile Include="Assets\Scripts\PlayerKatanaScan.cs" />
+    <Compile Include="Assets\Scripts\PlayerMouse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -827,27 +827,27 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Unity.Timeline.Player.csproj">
-      <Project>{599E69EB-79FC-DFCC-669D-6E86C4D19C5C}</Project>
+      <Project>{3924A859-E8AE-FE19-A32D-FF7485547E7E}</Project>
       <Name>Unity.Timeline.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.TextMeshPro.Player.csproj">
-      <Project>{D2C2CD9A-EBD7-4175-B9F6-64F8F7E6D856}</Project>
+      <Project>{C5C7094A-2E60-3B50-4A34-675E41B64D4A}</Project>
       <Name>Unity.TextMeshPro.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Flow.Player.csproj">
-      <Project>{483B98A5-A044-588D-73C8-464008B30A35}</Project>
+      <Project>{63BCDB99-D4A0-597E-B71C-271EB55FDCB0}</Project>
       <Name>Unity.VisualScripting.Flow.Player</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.Player.csproj">
-      <Project>{C9EFC83B-9A62-C59C-DA55-900C5C612BFF}</Project>
+      <Project>{0BE55F55-C4B2-3B6C-913A-D29821432FE4}</Project>
       <Name>UnityEngine.UI.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.State.Player.csproj">
-      <Project>{23D8BA86-91F7-6370-1DC2-AE071FFF378A}</Project>
+      <Project>{BF271985-A4FE-92EB-C6D1-F33AADCB3FB7}</Project>
       <Name>Unity.VisualScripting.State.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Core.Player.csproj">
-      <Project>{47C11D84-9BFD-4422-A5C2-7DB9B957684E}</Project>
+      <Project>{018F860D-680F-8B56-E508-280CC9A2630F}</Project>
       <Name>Unity.VisualScripting.Core.Player</Name>
     </ProjectReference>
   </ItemGroup>
