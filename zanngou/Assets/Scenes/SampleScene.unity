@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 918437359}
   m_Layer: 0
   m_Name: PlayerKatana
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -341,7 +341,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 918437353}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -535,7 +535,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.03551086, g: 0.119479656, b: 0.3584906, a: 0}
+  m_BackGroundColor: {r: 0.25698647, g: 0.7075472, b: 0.40470552, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -642,8 +642,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sword
       objectReference: {fileID: 0}
+    - target: {fileID: 8646635215489753729, guid: 1b7bf96090b65634da84b171b7f496f4, type: 3}
+      propertyPath: maxTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8646635215489753729, guid: 1b7bf96090b65634da84b171b7f496f4, type: 3}
+      propertyPath: minTime
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6977167738826195806, guid: 1b7bf96090b65634da84b171b7f496f4, type: 3}
+    - {fileID: 2396859645713857199, guid: 1b7bf96090b65634da84b171b7f496f4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1b7bf96090b65634da84b171b7f496f4, type: 3}
 --- !u!1 &1123008106
 GameObject:
