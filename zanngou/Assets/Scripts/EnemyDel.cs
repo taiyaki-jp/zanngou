@@ -3,16 +3,20 @@ using UnityEngine;
 public class EnemyDel : MonoBehaviour
 {
     /// <summary>
-    /// Õ“Ë‚µ‚½
+    /// ï¿½Õ“Ë‚ï¿½ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     /// <param name="collision"></param>
+    //seï¿½Ìó‚¯ï¿½ï¿½
+    
     void OnCollisionEnter(Collision collision)
     {
-        // Õ“Ë‚µ‚½‘Šè‚ÉPlayerƒ^ƒO‚ª•t‚¢‚Ä‚¢‚é‚Æ‚«
+        // ï¿½Õ“Ë‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Playerï¿½^ï¿½Oï¿½ï¿½ï¿½tï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½Æ‚ï¿½
         if (collision.gameObject.tag == "Player")
         {
-            // 0.1•bŒã‚ÉÁ‚¦‚é
+            // 0.1ï¿½bï¿½ï¿½Éï¿½ï¿½ï¿½ï¿½ï¿½
             Destroy(gameObject, 0.1f);
+            //ï¿½ï¿½ï¿½ï¿½Â‚ç‚·
+            
         }
     }
 }
