@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-
-public void change_button()
+using UnityEngine.SceneManagement; // UnityEngine.SceneManagemntの機能を使用
+ 
+public class NextScene : MonoBehaviour
 {
-    SceneManager.LoadScene("SampleScene");
+    public void change_button()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
 }

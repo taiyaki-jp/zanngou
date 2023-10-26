@@ -349,6 +349,7 @@
 "Assets/Scripts/PlayerKatanaRotation.cs"
 "Assets/Scripts/PlayerKatanaScan.cs"
 "Assets/Scripts/PlayerMouse.cs"
+"Assets/Scripts/RandomShake.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark02.cs"
