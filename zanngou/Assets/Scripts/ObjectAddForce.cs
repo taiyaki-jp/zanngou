@@ -9,7 +9,7 @@ public class ObjectAddForce : MonoBehaviour
     {
         // ‰“‚­‚É”ò‚Î‚·
         Rigidbody rb = GetComponent<Rigidbody>();
-        Vector3 force = new Vector3(0.0f, 0.0f, -1.0f);
+        Vector3 force = new Vector3(0.0f, 0.0f, -5.0f);
         rb.AddForce(force, ForceMode.Impulse);
     }
 
