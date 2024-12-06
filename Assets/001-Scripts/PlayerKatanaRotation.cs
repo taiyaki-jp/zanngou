@@ -6,13 +6,19 @@ using UnityEngine;
 public class PlayerKatanaRotation : MonoBehaviour
 {
     // 自身のTransform
-    [SerializeField] private Transform self;
+    private Transform self;
 
     // ターゲットのTransform
-    [SerializeField] private Transform target;
+    private Transform target;
 
     // 前方の基準となるローカル空間ベクトル
     [SerializeField] private Vector3 forward = Vector3.forward;
+
+    private void Start()
+    {
+        self = this.transform;
+        target=GameObject.Find("PrayerMouse").GetComponent<Transform>();
+    }
 
     private void Update()
     {
