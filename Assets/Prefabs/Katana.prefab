@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8635855004700025294}
   - component: {fileID: 7234745308068959509}
+  - component: {fileID: 6205042344180147240}
   m_Layer: 0
   m_Name: Katana
   m_TagString: Untagged
@@ -54,6 +55,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.24, y: 10, z: 0.8}
   m_Center: {x: -0.06, y: -0.1, z: 0.1}
+--- !u!114 &6205042344180147240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9192081007521419792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d0f41305f8cf8849b4e84e17b5667a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveSpeed: 5
 --- !u!1001 &5016494238518573000
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -95,22 +109,22 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: bf8cbb01f3b902b4a85cea9d65632531,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.21405223
+      value: -0.46414247
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bf8cbb01f3b902b4a85cea9d65632531,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.21382304
+      value: 0.46366474
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bf8cbb01f3b902b4a85cea9d65632531,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.6736046
+      value: -0.5333855
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bf8cbb01f3b902b4a85cea9d65632531,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.67432797
+      value: -0.53393507
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bf8cbb01f3b902b4a85cea9d65632531,
         type: 3}
@@ -125,7 +139,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: bf8cbb01f3b902b4a85cea9d65632531,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -144.778
+      value: -262
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bf8cbb01f3b902b4a85cea9d65632531,
         type: 3}
