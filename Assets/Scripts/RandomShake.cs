@@ -1,36 +1,30 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 
 public class RandomShake : MonoBehaviour
 {
-    // === 外部パラメーター（インスペクター表示）=============================
+    [SerializeField] private List<Transform> _pos = new();
 
-    public Transform moneyTextPos;      //「5000兆円」テキストのtransform
-    public Transform hoshiiTextPos;     //「欲しい！」テキストのtransform
-
-    public float shakePower;            // 揺らす強さ
-
-
-    // === 内部パラメーター ==================================================
-
-    Vector3 moneyTextInitPos;           // 開始時の位置
-    Vector3 hoshiiTextInitPos;
-
-
-    // === コード（MonoBehaviour基本機能の実装）==============================
+    public float _shakePower;
+    // 開始時の位置
+    private readonly List<Vector3> _initPos = new();
 
     private void Start ()
     {
-        // 開始時の位置を取得
-        moneyTextInitPos = moneyTextPos.position;
-        hoshiiTextInitPos = hoshiiTextPos.position;
+        foreach (Transform pos in _pos)
+        {
+            _initPos.Add(pos.position);
+        }
     }
 
 
     private void Update ()
     {
         // ランダムに揺らす
-        moneyTextPos.position = moneyTextInitPos + Random.insideUnitSphere * shakePower;
-        hoshiiTextPos.position = hoshiiTextInitPos + Random.insideUnitSphere * shakePower;
+        for(int i=0;i<_pos.Count;i++)
+        {
+            _pos[i].position = _initPos[i] + Random.insideUnitSphere * _shakePower;
+        }
     }
 }
