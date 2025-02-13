@@ -27,8 +27,8 @@ public class Player : MonoBehaviour
 
         // 回転補正→ターゲット方向への回転の順に、自身の向きを操作する
         _self.rotation = lookAtRotation * offsetRotation;
-        _text.text = _self.rotation.ToString();
-        _text2.text = _self.rotation.eulerAngles.ToString();
+
+        _text.text = _self.rotation.eulerAngles.ToString();
         //これで出る数値のxは上下が0、左右が90　つまりx同士を足して90の時、yが同じなら並行、違えば直角に交わっていることになる　zは上下反転しているかどうかで関係ない
     }
 }

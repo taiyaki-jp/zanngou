@@ -18,5 +18,7 @@ public class Enemy : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         _hitManager .Hit(this.gameObject.transform.rotation);
+        this.transform.position=new Vector3(0f,0f,15f);
+        this.transform.rotation=Quaternion.Euler(Random.Range(0f,360f),90f,0f);
     }
 }

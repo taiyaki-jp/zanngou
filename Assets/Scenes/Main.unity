@@ -861,27 +861,27 @@ PrefabInstance:
     - target: {fileID: 8635855004700025294, guid: 222a53733ac338949a5c68fe182def96,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6532815
+      value: 0.70441604
       objectReference: {fileID: 0}
     - target: {fileID: 8635855004700025294, guid: 222a53733ac338949a5c68fe182def96,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.27059805
+      value: 0.06162845
       objectReference: {fileID: 0}
     - target: {fileID: 8635855004700025294, guid: 222a53733ac338949a5c68fe182def96,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.6532815
+      value: 0.70441604
       objectReference: {fileID: 0}
     - target: {fileID: 8635855004700025294, guid: 222a53733ac338949a5c68fe182def96,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.27059805
+      value: -0.06162845
       objectReference: {fileID: 0}
     - target: {fileID: 8635855004700025294, guid: 222a53733ac338949a5c68fe182def96,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 45
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8635855004700025294, guid: 222a53733ac338949a5c68fe182def96,
         type: 3}
@@ -1257,7 +1257,12 @@ PrefabInstance:
     - target: {fileID: 9192081007521419792, guid: 222a53733ac338949a5c68fe182def96,
         type: 3}
       propertyPath: m_Name
-      value: Katana
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192081007521419792, guid: 222a53733ac338949a5c68fe182def96,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6205042344180147240, guid: 222a53733ac338949a5c68fe182def96, type: 3}
