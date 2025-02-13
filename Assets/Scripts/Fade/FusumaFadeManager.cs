@@ -1,20 +1,21 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FusumaFadeManager : MonoBehaviour
 {
     private FusumaFadeLogic _logic;
-    private async void Start()
+    private void Start()
     {
         _logic = new FusumaFadeLogic();
-        if (FadeSingleton.IsFirst)
-        {
-            FadeSingleton.IsFirst = false;
-            for (int i = 0; i < 4; i++)
-            {
-                Debug.Log(FadeSingleton.ChildFusuma[i].transform.position);
-            }
-        }
+    }
+
+    public async UniTask Fade(string sceneName)
+    {
         await _logic.FadeIn();
+        await UniTask.Delay(100,cancellationToken:this.GetCancellationTokenOnDestroy());
+        await SceneManager.LoadSceneAsync(sceneName);
+        await UniTask.Delay(100,cancellationToken:this.GetCancellationTokenOnDestroy());
         _ = _logic.FadeOut();
     }
 }

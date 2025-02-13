@@ -1,13 +1,12 @@
+using System;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class FusumaFadeLogic
 {
     private static int[] CLOSED_POS = { 1440, 480 };
-    private static int[] OPEN_POS = { 2340, -480 };
-
-    private RectTransform rectTransform;
-
+    private static int[] OPEN_POS = { 2400, -480 };
     public async UniTask FadeIn()
     {
         var t = 0f;
@@ -15,15 +14,15 @@ public class FusumaFadeLogic
         {
             t += Time.deltaTime;
 
-            var Pos =new float[2];
-            for (int i = 0; i < 2; i++)
+            var pos =new float[2];
+            for (var i = 0; i < 2; i++)
             {
-                Pos[i] = Mathf.Lerp(OPEN_POS[i], CLOSED_POS[i], t);
+                pos[i] = Mathf.Lerp(OPEN_POS[i], CLOSED_POS[i], t);
             }
 
-            for (int i = 0; i < 2; i++)
+            for (var i = 0; i < 2; i++)
             {
-                FadeSingleton.Fusuma[i].transform.position=new Vector3(Pos[i],FadeSingleton.Fusuma[i].transform.position.y,FadeSingleton.Fusuma[i].transform.position.z);
+                FadeSingleton.Fusuma[i].transform.position=new Vector3(pos[i],FadeSingleton.Fusuma[i].transform.position.y,FadeSingleton.Fusuma[i].transform.position.z);
             }
             await UniTask.Yield();
         }
@@ -31,13 +30,12 @@ public class FusumaFadeLogic
 
     public async UniTask FadeOut()
     {
-        var t = 0f;
-
-
         var fusumas = new Rigidbody2D[4];
-        for (int i = 0; i < 4; i++)
+        var fusumaDefPos = new Vector3[4];
+        for (var i = 0; i < 4; i++)
         {
             fusumas[i] = FadeSingleton.ChildFusuma[i].GetComponent<Rigidbody2D>();
+            fusumaDefPos[i] = FadeSingleton.ChildFusuma[i].transform.localPosition;
         }
 
         var vel = new Vector2[]
@@ -48,28 +46,24 @@ public class FusumaFadeLogic
             new (0f, -1f),
         };
 
-        for (int i = 0; i < 4; i++)
+        for (var i = 0; i < 4; i++)
         {
             fusumas[i].velocity = vel[i]*100f;
             fusumas[i].gravityScale = 100f;
         }
 
+        await UniTask.Delay(TimeSpan.FromSeconds(3f));
 
-        while (t<5f)
-        {
-            t += Time.deltaTime;
-            await UniTask.Yield();
-        }
-
-        for (int i = 0; i < 2; i++)
+        for (var i = 0; i < 2; i++)
         {
             FadeSingleton.Fusuma[i].transform.position= new Vector3(OPEN_POS[i],FadeSingleton.Fusuma[i].transform.position.y,FadeSingleton.Fusuma[i].transform.position.z);
         }
 
-        for (int i = 0; i < 4; i++)
+        for (var i = 0; i < 4; i++)
         {
             fusumas[i].gravityScale = 0f;
             fusumas[i].velocity = Vector2.zero;
+            FadeSingleton.ChildFusuma[i].transform.localPosition = fusumaDefPos[i];
         }
     }
 }

@@ -3,12 +3,9 @@ using UnityEngine;
 public class FadeSingleton : MonoBehaviour
 {
     private static FadeSingleton _instanceClosed;
-
     private static GameObject[] _fusuma = new GameObject[2];
-
     private static GameObject[] _cFusumas = new GameObject[4];
 
-    private static bool _isFirst;
 
     private void Awake()
     {
@@ -26,7 +23,6 @@ public class FadeSingleton : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);//それをシーンを跨ぐ様にする
 
             //↓初期化処理
-            _isFirst = true;
             _fusuma[0] = GameObject.Find("FusumaR");
             _fusuma[1] = GameObject.Find("FusumaL");
             _cFusumas[0] = GameObject.Find("FusumaRU");
@@ -39,10 +35,4 @@ public class FadeSingleton : MonoBehaviour
 
     public static GameObject[] Fusuma=>_fusuma;
     public static GameObject[] ChildFusuma => _cFusumas;
-
-    public static bool IsFirst
-    {
-        get => _isFirst;
-        set => _isFirst = value;
-    }
 }
