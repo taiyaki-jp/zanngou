@@ -1,14 +1,15 @@
-using System;
 using UnityEngine;
 
 public class HitManager : MonoBehaviour
 {
     private GameObject _player;
     private MainGameManager _gameManager;
+    private FusumaFadeManager _fadeManager;
     private void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
         _gameManager = GameObject.Find("SingletonCanvas").GetComponent<MainGameManager>();
+        _fadeManager = GameObject.Find("SingletonCanvas").GetComponent<FusumaFadeManager>();
     }
 
     public void Hit(Quaternion enemyRotation)
@@ -27,6 +28,7 @@ public class HitManager : MonoBehaviour
         if (Mathf.Abs(xAngle - 90) < _gameManager.DiffcultyAngle)
         {
             Debug.Log("甘い!");
+            _gameManager.BlockCount++;
         }
         else
         {
@@ -34,9 +36,13 @@ public class HitManager : MonoBehaviour
             _gameManager.HP--;
             if (_gameManager.HP == 0)
             {
-                Debug.Log("Game Over");
+                GameOver();
             }
         }
+    }
 
+    private void GameOver()
+    {
+        _ = _fadeManager.Fade("Result");
     }
 }

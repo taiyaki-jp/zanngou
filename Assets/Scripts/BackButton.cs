@@ -1,53 +1,45 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ModeSerect : MonoBehaviour
+public class BackButton : MonoBehaviour
 {
     [SerializeField] private List<Button> _buttons;
 
     private MainGameManager _gameManager;
     private FusumaFadeManager _fadeManager;
     private bool _isPressed=false;
-
+    // Start is called before the first frame update
     private void Start()
     {
         _fadeManager = GameObject.Find("SingletonCanvas").GetComponent<FusumaFadeManager>();
         _gameManager = GameObject.Find("SingletonCanvas").GetComponent<MainGameManager>();
-        _buttons[0].onClick.AddListener(GameStartLv1);
-        _buttons[1].onClick.AddListener(GameStartLv2);
-        _buttons[2].onClick.AddListener(GameStartLv3);
-        _buttons[3].onClick.AddListener(GameStartLv4);
-        _buttons[4].onClick.AddListener(GameStartLv5);
+        _buttons[0].onClick.AddListener(ReStart);
+        _buttons[1].onClick.AddListener(BackToMenu);
+        _buttons[2].onClick.AddListener(BackToTitle);
         _isPressed = false;
     }
 
-    private void GameStartLv1()
-    {
-        GameStart(0);
-    }
-    private void GameStartLv2()
-    {
-        GameStart(1);
-    }
-    private void GameStartLv3()
-    {
-        GameStart(2);
-    }
-    private void GameStartLv4()
-    {
-       GameStart(3);
-    }
-    private void GameStartLv5()
-    {
-        GameStart(4);
-    }
-
-    private void GameStart(int lv)
+    private void BackToTitle()
     {
         if (_isPressed)return;
         _isPressed = true;
-        _gameManager.NowDiffculty = lv;
+        _ = _fadeManager.Fade("Title");
+    }
+
+    private void BackToMenu()
+    {
+        if (_isPressed)return;
+        _isPressed = true;
+        _ = _fadeManager.Fade("ModeSerect");
+    }
+
+    private void ReStart()
+    {
+        if (_isPressed)return;
+        _isPressed = true;
+        var lv=_gameManager.NowDiffculty ;
         if (lv==4)_gameManager.HP = 1;
         else _gameManager.HP = 3;
         _gameManager.BlockCount = 0;
