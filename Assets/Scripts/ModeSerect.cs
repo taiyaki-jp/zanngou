@@ -1,60 +1,84 @@
+using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ModeSerect : MonoBehaviour
+public class ModeSerect : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
 {
     [SerializeField] private List<Button> _buttons;
+    [SerializeField] private List<GameObject> _difficulties;
 
-    private MainGameManager _gameManager;
+    private MainGameVariables _variables;
     private FusumaFadeManager _fadeManager;
+    private SoundPlayer _soundPlayer;
     private bool _isPressed=false;
+    private GameObject nowUI = null;
 
     private void Start()
     {
         _fadeManager = GameObject.Find("SingletonCanvas").GetComponent<FusumaFadeManager>();
-        _gameManager = GameObject.Find("SingletonCanvas").GetComponent<MainGameManager>();
-        _buttons[0].onClick.AddListener(GameStartLv1);
-        _buttons[1].onClick.AddListener(GameStartLv2);
-        _buttons[2].onClick.AddListener(GameStartLv3);
-        _buttons[3].onClick.AddListener(GameStartLv4);
-        _buttons[4].onClick.AddListener(GameStartLv5);
+        _variables = GameObject.Find("SingletonCanvas").GetComponent<MainGameVariables>();
+        _soundPlayer = GameObject.Find("SoundSingleton").GetComponent<SoundPlayer>();
+        _buttons[0].onClick.AddListener(()=>ButtonGeneric(0));
+        _buttons[1].onClick.AddListener(()=>ButtonGeneric(1));
+        _buttons[2].onClick.AddListener(()=>ButtonGeneric(2));
+        _buttons[3].onClick.AddListener(()=>ButtonGeneric(3));
+        _buttons[4].onClick.AddListener(()=>ButtonGeneric(4));
         _isPressed = false;
     }
-
-    private void GameStartLv1()
-    {
-        GameStart(0);
-    }
-    private void GameStartLv2()
-    {
-        GameStart(1);
-    }
-    private void GameStartLv3()
-    {
-        GameStart(2);
-    }
-    private void GameStartLv4()
-    {
-       GameStart(3);
-    }
-    private void GameStartLv5()
-    {
-        GameStart(4);
-    }
-
-    private void GameStart(int lv)
+    private async void ButtonGeneric(int lv)
     {
         if (_isPressed)return;
         _isPressed = true;
-        _gameManager.NowDiffculty = lv;
-        if (lv==4)_gameManager.HP = 1;
-        else _gameManager.HP = 3;
-        _gameManager.BlockCount = 0;
+        _soundPlayer.PlaySound(SoundEnum.ClickShort);
+        await UniTask.Delay(TimeSpan.FromSeconds(1));
+
+        _variables.NowDiffculty = lv;
+
+        _ = _soundPlayer.ChangeBGM();
         _ = _fadeManager.Fade("Main");
         foreach (var button in _buttons)
         {
             button.interactable = false;
         }
+    }
+
+    private void ChengeUI(string ButtonName ="")
+    {
+        if(nowUI != null)nowUI.gameObject.SetActive(false);
+        switch (ButtonName)
+        {
+            case "Easy":
+                nowUI = _difficulties[0];
+                break;
+            case "Normal":
+                nowUI = _difficulties[1];
+                break;
+            case "Hard":
+                nowUI = _difficulties[2];
+                break;
+            case "Nightmare":
+                nowUI = _difficulties[3];
+                break;
+            case "Inferno":
+                nowUI = _difficulties[4];
+                break;
+            default:
+                nowUI = null;
+                break;
+        }
+        if (nowUI != null) nowUI.SetActive(true);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        ChengeUI(eventData.pointerEnter.name);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        ChengeUI();
     }
 }

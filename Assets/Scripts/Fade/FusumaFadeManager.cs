@@ -8,6 +8,7 @@ public class FusumaFadeManager : MonoBehaviour
     private void Start()
     {
         _logic = new FusumaFadeLogic();
+        _logic.SoundPlayer=GameObject.Find("SoundSingleton").GetComponent<SoundPlayer>();
     }
 
     public async UniTask Fade(string sceneName)

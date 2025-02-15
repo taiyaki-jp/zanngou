@@ -7,9 +7,12 @@ public class FusumaFadeLogic
 {
     private static int[] CLOSED_POS = { 1440, 480 };
     private static int[] OPEN_POS = { 2400, -480 };
+    private SoundPlayer _soundPlayer;
+    public SoundPlayer SoundPlayer {set => _soundPlayer = value; }
     public async UniTask FadeIn()
     {
         var t = 0f;
+        _soundPlayer.PlaySound(SoundEnum.Fusuma);
         while (t < 1f)
         {
             t += Time.deltaTime;
@@ -51,6 +54,7 @@ public class FusumaFadeLogic
             fusumas[i].velocity = vel[i]*100f;
             fusumas[i].gravityScale = 100f;
         }
+        _soundPlayer.PlaySound(SoundEnum.KatanaCut);
 
         await UniTask.Delay(TimeSpan.FromSeconds(3f));
 
