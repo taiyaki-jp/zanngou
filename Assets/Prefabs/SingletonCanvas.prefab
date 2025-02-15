@@ -504,10 +504,10 @@ MonoBehaviour:
   _diffcultyAngle: 230000001e000000190000000f00000005000000
   _diffcultySpeed:
   - 5
-  - 4
-  - 3
-  - 2.5
-  - 1
+  - 6
+  - 7
+  - 7.5
+  - 8
 --- !u!114 &4245349880220321327
 MonoBehaviour:
   m_ObjectHideFlags: 0
