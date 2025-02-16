@@ -33,6 +33,7 @@ public class BackButton : MonoBehaviour
             button.interactable = false;
         }
         _soundPlayer.PlaySound(SoundEnum.ClickShort);
+        if (scene == "Main") _ = _soundPlayer.ChangeBGM();
         await UniTask.Delay(TimeSpan.FromSeconds(1));
         _ = _fadeManager.Fade(scene);
     }

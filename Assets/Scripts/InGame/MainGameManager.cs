@@ -2,10 +2,12 @@ using System;
 using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainGameManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _text;
+    [SerializeField]private Image _brackOut;
     private FusumaFadeManager _fadeManager;
     private SoundPlayer _soundPlayer;
     private MainGameVariables _variables;
@@ -23,6 +25,7 @@ public class MainGameManager : MonoBehaviour
         else _variables.HP = 3;
         _variables.BlockCount = 0;
         _variables.Missed = false;
+        _brackOut.color = new Color(0f, 0f, 0f, 0f);
 
         StartCount();
     }
@@ -48,7 +51,20 @@ public class MainGameManager : MonoBehaviour
     public void GameOver()
     {
         _variables.Missed = true;
+        if (_variables.NowDiffculty == 4)_brackOut.color = new Color(1f, 0f, 0f, 0f);
+        _ = BrackOut();
         _ = Gameend();
+    }
+
+    private async UniTaskVoid BrackOut()
+    {
+        var t = 0f;
+        while (t<1f)
+        {
+            _brackOut.color = new Color(_brackOut.color.r,_brackOut.color.g,_brackOut.color.b,t);
+            t += Time.deltaTime;
+            await UniTask.Yield();
+        }
     }
 
     private async UniTaskVoid Gameend()

@@ -14,7 +14,7 @@ public class RandomShake : MonoBehaviour
     {
         foreach (Transform pos in _pos)
         {
-            _initPos.Add(pos.position);
+            _initPos.Add(pos.localPosition);
         }
     }
 
@@ -24,7 +24,7 @@ public class RandomShake : MonoBehaviour
         // ランダムに揺らす
         for(int i=0;i<_pos.Count;i++)
         {
-            _pos[i].position = _initPos[i] + Random.insideUnitSphere * _shakePower;
+            _pos[i].localPosition = _initPos[i] + Random.insideUnitSphere * _shakePower;
         }
     }
 }

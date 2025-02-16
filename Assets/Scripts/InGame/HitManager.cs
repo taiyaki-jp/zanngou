@@ -6,12 +6,14 @@ public class HitManager : MonoBehaviour
     private MainGameVariables _gameVariables;
     private SoundPlayer _soundPlayer;
     private MainGameManager _gameManager;
+    private InGameUIManager _inGameUIManager;
     private void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
         _gameVariables = GameObject.Find("SingletonCanvas").GetComponent<MainGameVariables>();
         _soundPlayer = GameObject.Find("SoundSingleton").GetComponent<SoundPlayer>();
         _gameManager = this.GetComponent<MainGameManager>();
+        _inGameUIManager = this.GetComponent<InGameUIManager>();
     }
 
     public void Hit(Quaternion enemyRotation)
@@ -39,6 +41,7 @@ public class HitManager : MonoBehaviour
             if(_gameVariables.NowDiffculty==4) _soundPlayer.PlaySound(SoundEnum.KatanaCut);
             else _soundPlayer.PlaySound(SoundEnum.Damage);
             _gameVariables.HP--;
+            _inGameUIManager.ChangeLife();
             if (_gameVariables.HP == 0)
             {
                 _gameManager.GameOver();

@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if(_variables.Missed==true)Destroy(this.gameObject);
+        if(_variables.Missed)return;
         this.transform.position-=new Vector3(0f,0f,_moveSpeed*Time.deltaTime);
     }
 

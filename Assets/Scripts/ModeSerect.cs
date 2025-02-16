@@ -33,22 +33,22 @@ public class ModeSerect : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
         if (_isPressed)return;
         _isPressed = true;
         _soundPlayer.PlaySound(SoundEnum.ClickShort);
+        foreach (var button in _buttons)
+        {
+            button.interactable = false;
+        }
         await UniTask.Delay(TimeSpan.FromSeconds(1));
 
         _variables.NowDiffculty = lv;
 
         _ = _soundPlayer.ChangeBGM();
         _ = _fadeManager.Fade("Main");
-        foreach (var button in _buttons)
-        {
-            button.interactable = false;
-        }
     }
 
-    private void ChengeUI(string ButtonName ="")
+    private void ChengeUI(string buttonName ="")
     {
         if(nowUI != null)nowUI.gameObject.SetActive(false);
-        switch (ButtonName)
+        switch (buttonName)
         {
             case "Easy":
                 nowUI = _difficulties[0];

@@ -2,18 +2,20 @@ using System;
 using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ResultManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI _scoreTextInt;
-    [SerializeField] TextMeshProUGUI _ScoreTextStr;
+    [FormerlySerializedAs("_ScoreTextStr")] [SerializeField] TextMeshProUGUI _scoreTextStr;
     [SerializeField] private GameObject _buttons;
     private static String[] _sihanVoice= new string[]
     {
         "まだまだ精進が必要だ",
         "コツを掴んできたようだな",
         "あとは回数を重ねるのみ",
-        "合格だ"
+        "合格だ",
+        "命があるだけ奇跡と思え"
     };
 
     private MainGameVariables _variables;
@@ -35,22 +37,33 @@ public class ResultManager : MonoBehaviour
         _scoreTextInt.text = $"{_variables.BlockCount} 回";
         await UniTask.Delay(TimeSpan.FromSeconds(2));
         var sihanVoice = 0;
-        switch (_variables.BlockCount)
+
+        if (_variables.NowDiffculty == 4)
+            if(_variables.BlockCount != 0) _scoreTextStr.text=$"{_variables.BlockCount}人抜き　見事";
+            else
+            {
+                sihanVoice = 4;
+                _scoreTextStr.text = _sihanVoice[sihanVoice];
+            }
+        else
         {
-            case <50:
-               sihanVoice = 0;
-               break;
-            case < 75:
-                sihanVoice = 1;
-                break;
-            case < 85:
-                sihanVoice = 2;
-                break;
-            case 100:
-                sihanVoice = 3;
-                break;
+            switch (_variables.BlockCount)
+            { case < 50:
+                    sihanVoice = 0;
+                    break;
+                case < 75:
+                    sihanVoice = 1;
+                    break;
+                case < 90:
+                    sihanVoice = 2;
+                    break;
+                case < 100:
+                    sihanVoice = 3;
+                    break;
+            }
+            _scoreTextStr.text = _sihanVoice[sihanVoice];
         }
-        _ScoreTextStr.text = _sihanVoice[sihanVoice];
+
         _buttons.SetActive(true);
     }
 }
