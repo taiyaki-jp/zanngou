@@ -19,4 +19,15 @@ public class FusumaFadeManager : MonoBehaviour
         await UniTask.Delay(100,cancellationToken:this.GetCancellationTokenOnDestroy());
         _ = _logic.FadeOut();
     }
+
+    public async UniTask GameEnd()
+    {
+        await _logic.FadeIn();
+        await UniTask.Delay(100,cancellationToken:this.GetCancellationTokenOnDestroy());
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
 }
